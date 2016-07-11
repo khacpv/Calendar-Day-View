@@ -1,0 +1,4 @@
+-keep class com.framgia.library.calendardayview.CalendarDayView { *; }
+-keep class com.framgia.library.calendardayview.DayView { *; }
+-keep class com.framgia.library.calendardayview.EventPopup { *; }
+-keep class com.framgia.library.calendardayview.EventView { *; }
