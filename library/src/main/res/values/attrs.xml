@@ -2,5 +2,7 @@
 <resources>
     <declare-styleable name="CalendarDayView">
         <attr name="debug" format="boolean"/>
+        <attr name="eventPaddingLeft" format="dimension"/>
+        <attr name="dayHeight" format="dimension"/>
     </declare-styleable>
 </resources>

@@ -3,10 +3,13 @@ package com.framgia.sample.calendardayview;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import com.framgia.library.calendardayview.CalendarDayView;
 import com.framgia.library.calendardayview.EventPopup;
 import com.framgia.library.calendardayview.EventView;
 import com.framgia.library.calendardayview.data.IEvent;
+import com.framgia.library.calendardayview.data.IPopupEvent;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -22,13 +25,25 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         dayView = (CalendarDayView)findViewById(R.id.calendar);
-        dayView.addOnEventClickListener(new EventView.OnEventClickListener(){
+        dayView.setOnEventClickListener(new EventView.OnEventClickListener(){
             @Override
             public void onEventClick(EventView view, IEvent data) {
                 EventPopup popup = view.getPopup();
                 if (popup != null) {
                     popup.show();
                 }
+            }
+        });
+
+        dayView.setOnPopupClickListener(new EventPopup.OnEventPopupClickListener() {
+            @Override
+            public void onPopupClick(EventPopup view, IEvent event, IPopupEvent data) {
+                Log.e("TAG", "onPopupClick:" + event.getName());
+            }
+
+            @Override
+            public void onQuoteClick(View view, IEvent event, IPopupEvent data) {
+                Log.e("TAG", "onQuoteClick:" + event.getName());
             }
         });
 

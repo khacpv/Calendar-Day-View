@@ -38,7 +38,7 @@ public class DayView extends FrameLayout {
         mTextHour.setText(text);
     }
 
-    public int getHourTextWidth(){
-        return mTextHour.getMeasuredWidth();
+    public float getHourTextWidth(){
+        return mTextHour.getPaint().measureText(mTextHour.getText().toString());
     }
 }

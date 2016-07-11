@@ -145,7 +145,7 @@ public class EventPopup extends FrameLayout {
         throw new UnsupportedOperationException("you should use setOnEventClickListener()");
     }
 
-    public void setOnEventClickListener(OnEventPopupClickListener listener) {
+    public void setOnPopupClickListener(OnEventPopupClickListener listener) {
         this.mPopupClickListener = listener;
     }
 

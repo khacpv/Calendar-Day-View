@@ -1,0 +1,27 @@
+ext {
+  bintrayRepo = 'maven'
+  bintrayName = 'library'
+
+  publishedGroupId = 'com.framgia.library.calendardayview'
+  libraryName = 'CalendarDayView'
+  artifact = 'library'
+
+  libraryDescription = 'A Calendar View by day'
+
+  siteUrl = 'https://github.com/khacpv/Calendar-Day-View'
+  gitUrl = 'https://github.com/khacpv/Calendar-Day-View.git'
+
+  libraryVersion = '1.0.2'
+
+  developerId = 'khacpv'
+  developerName = 'khac pham'
+  developerEmail = 'khacpv@gmail.com'
+
+  licenseName = 'The Apache Software License, Version 2.0'
+  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+  allLicenses = ["Apache-2.0"]
+}
+
+// Upload to JCenter
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
