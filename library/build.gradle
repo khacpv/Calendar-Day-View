@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 apply from: 'bintray.gradle'
+
+group='com.github.khacpv'
 
 android {
   compileSdkVersion 23
