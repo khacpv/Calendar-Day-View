@@ -1,7 +1,7 @@
 # Calendar-Day-View
 Calendar Day View
 
-![](./image/screenshot.png =250x)
+<a><img src="./image/screenshot.png" width="200"></a>
 
 #### install:
 
