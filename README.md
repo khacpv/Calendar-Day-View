@@ -3,10 +3,27 @@ Calendar Day View
 
 <a><img src="./image/screenshot.png" width="200"></a>
 
-#### install:
+### install:
+
+**via Jcenter**
 
 ````Gradle
 compile 'com.framgia.library.calendardayview:library:1.0.2'
+````
+
+**or via JitPack (to get current code)**
+
+project/build.gradle
+````gradle
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+````
+module/build.gradle
+````gradle
+compile 'com.github.khacpv:Calendar-Day-View:master-SNAPSHOT'
 ````
 
 #### How to use:
