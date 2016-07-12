@@ -87,13 +87,15 @@ public class CalendarDayView extends FrameLayout {
             mLayoutEvent.addView(eventView, eventView.getLayoutParams());
 
             // add popup views
-            EventPopup popup = new EventPopup(getContext());
-            popup.setEvent(event);
-            popup.setPosition(rect);
-            popup.setOnPopupClickListener(mPopupClickListener);
-            popup.hide();
-            eventView.addPopupView(popup);
-            mLayoutPopup.addView(popup, popup.getLayoutParams());
+            if(event.getPopup() != null) {
+                EventPopup popup = new EventPopup(getContext());
+                popup.setEvent(event);
+                popup.setPosition(rect);
+                popup.setOnPopupClickListener(mPopupClickListener);
+                popup.hide();
+                eventView.addPopupView(popup);
+                mLayoutPopup.addView(popup, popup.getLayoutParams());
+            }
         }
     }
 
