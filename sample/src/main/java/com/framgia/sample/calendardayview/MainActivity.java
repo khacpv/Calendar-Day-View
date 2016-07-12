@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity{
         {
             int eventColor = getResources().getColor(R.color.eventColor4);
             Calendar timeStart = Calendar.getInstance();
-            timeStart.set(Calendar.HOUR_OF_DAY,8);
+            timeStart.set(Calendar.HOUR_OF_DAY,16);
             timeStart.set(Calendar.MINUTE,15);
             Calendar timeEnd = (Calendar) timeStart.clone();
             timeEnd.add(Calendar.HOUR_OF_DAY, 1);
