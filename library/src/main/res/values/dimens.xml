@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="dayHeight">50dp</dimen>
+    <dimen name="dayHeight">64dp</dimen>
 
     <!-- Calendar Day View -->
 

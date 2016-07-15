@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.framgia.library.calendardayview.data.IEvent;
 
 /**
@@ -18,9 +20,15 @@ public class EventView extends FrameLayout {
 
     protected EventPopup mPopup;
 
-    protected Rect mPosition;
-
     protected OnEventClickListener mEventClickListener;
+
+    private RelativeLayout mEventHeader;
+
+    private TextView mEventHeaderText1;
+
+    private TextView mEventHeaderText2;
+
+    private TextView mEventName;
 
     public EventView(Context context) {
         super(context);
@@ -39,6 +47,9 @@ public class EventView extends FrameLayout {
 
     protected void init(AttributeSet attrs) {
         LayoutInflater.from(getContext()).inflate(R.layout.view_event, this, true);
+
+        mEventHeader = (RelativeLayout) findViewById(R.id.item_event_header);
+        mEventName = (TextView) findViewById(R.id.item_event_name);
 
         super.setOnClickListener(new OnClickListener() {
             @Override
@@ -73,14 +84,23 @@ public class EventView extends FrameLayout {
 
     public void setEvent(IEvent event) {
         this.mEvent = event;
+        mEventName.setText(String.valueOf(event.getName()));
     }
 
-    public void setPosition(Rect rect){
+    public int getHeaderHeight() {
+        return mEventHeader.getMeasuredHeight();
+    }
+
+    public int getHeaderPadding() {
+        return mEventHeader.getPaddingBottom() + mEventHeader.getPaddingTop();
+    }
+
+    public void setPosition(Rect rect, int topMargin, int bottomMargin){
         FrameLayout.LayoutParams params =
                 new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.topMargin = rect.top;
-        params.height = rect.height();
+        params.topMargin = rect.top - getHeaderHeight() - getHeaderPadding() + topMargin;
+        params.height = rect.height() + getHeaderHeight() + getHeaderPadding() + bottomMargin;
         params.leftMargin = rect.left;
         setLayoutParams(params);
     }

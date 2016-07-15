@@ -122,7 +122,7 @@ public class EventPopup extends FrameLayout {
         FrameLayout.LayoutParams params =
                 new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.topMargin = rect.top + rect.height() / 2 - mQuote.getLayoutParams().height;
+        params.topMargin = rect.top + 2;
         params.leftMargin = rect.left;
         setLayoutParams(params);
     }

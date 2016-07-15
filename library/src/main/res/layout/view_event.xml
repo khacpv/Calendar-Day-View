@@ -4,10 +4,42 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
-    <TextView
-        android:layout_width="wrap_content"
+    android:gravity="center"
+    >
+    <RelativeLayout
+        android:id="@+id/item_event_header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Event"/>
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+        <TextView
+            android:id="@+id/item_event_header_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016年5月31日"/>
+        <TextView
+            android:id="@+id/item_event_header_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="時間を編集する"
+            android:drawableRight="@drawable/d2b_ic_right"
+            android:drawablePadding="4dp"
+            android:paddingRight="8dp"
+            android:textColor="#ff6378"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/item_event_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/eventColor"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/item_event_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Event"/>
+    </LinearLayout>
+
 </LinearLayout>

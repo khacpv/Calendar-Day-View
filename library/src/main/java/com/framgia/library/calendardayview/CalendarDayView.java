@@ -5,12 +5,9 @@ import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import com.framgia.library.calendardayview.data.IEvent;
-import com.framgia.library.calendardayview.data.IPopupEvent;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -24,6 +21,10 @@ public class CalendarDayView extends FrameLayout {
     private int mEventPaddingLeft = 0;
 
     private int mHourWidth = 120;
+
+    private int mTimeHeight = 120;
+
+    private int mSeparateHourHeight = 0;
 
     private LinearLayout mLayoutContainer;
 
@@ -72,6 +73,19 @@ public class CalendarDayView extends FrameLayout {
         addDayViews();
     }
 
+    private void addDayViews() {
+        mLayoutContainer.removeAllViews();
+        DayView dayView = null;
+        for (int i = 0; i < 25; i++) {
+            dayView = new DayView(getContext());
+            dayView.setText(String.format("%1$2s:00", i));
+            mLayoutContainer.addView(dayView);
+        }
+        mHourWidth = (int) dayView.getHourTextWidth();
+        mTimeHeight = (int) dayView.getHourTextHeight();
+        mSeparateHourHeight = (int) dayView.getSeparateHeight();
+    }
+
     public void setEvents(List<IEvent> events) {
         mLayoutEvent.removeAllViews();
         mLayoutPopup.removeAllViews();
@@ -81,8 +95,7 @@ public class CalendarDayView extends FrameLayout {
             EventView eventView = new EventView(getContext());
             eventView.setEvent(event);
             Rect rect = getEventBound(event);
-            eventView.setPosition(rect);
-            eventView.setBackgroundColor(event.getColor());
+            eventView.setPosition(rect, -mTimeHeight, mTimeHeight - mSeparateHourHeight * 2);
             eventView.setOnEventClickListener(mEventClickListener);
             mLayoutEvent.addView(eventView, eventView.getLayoutParams());
 
@@ -99,22 +112,10 @@ public class CalendarDayView extends FrameLayout {
         }
     }
 
-    private void addDayViews() {
-        DayView dayView = null;
-        for (int i = 0; i < 25; i++) {
-            dayView = new DayView(getContext());
-            dayView.setText(String.format("%1$2s:00", i));
-            mLayoutContainer.addView(dayView);
-        }
-        if(dayView != null) {
-            mHourWidth = (int)dayView.getHourTextWidth();
-        }
-    }
-
     private Rect getEventBound(IEvent event) {
         Rect rect = new Rect();
-        rect.top = getPositionOfTime(event.getStartTime());
-        rect.bottom = getPositionOfTime(event.getEndTime());
+        rect.top = getPositionOfTime(event.getStartTime()) + mTimeHeight / 2 + mSeparateHourHeight;
+        rect.bottom = getPositionOfTime(event.getEndTime()) + mTimeHeight / 2 + mSeparateHourHeight;
         rect.left = mHourWidth + mEventPaddingLeft;
         rect.right = getWidth();
         return rect;

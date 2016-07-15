@@ -48,26 +48,15 @@ public class MainActivity extends AppCompatActivity{
         });
 
         events = new ArrayList<>();
-        {
-            int eventColor = getResources().getColor(R.color.eventColor1);
-            Calendar timeStart = Calendar.getInstance();
-            Calendar timeEnd = (Calendar) timeStart.clone();
-            timeEnd.add(Calendar.HOUR_OF_DAY, 1);
-            Event event = new Event(0, timeStart, timeEnd, "event 0", "house", eventColor);
-            event.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.avatar));
-            event.setTitle("event 0 user request");
-            event.setDescription("Yuong des;laskf");
-            event.setQuote("my quote test");
-            events.add(event);
-        }
 
         {
-            int eventColor = getResources().getColor(R.color.eventColor2);
+            int eventColor = getResources().getColor(R.color.eventColor);
             Calendar timeStart = Calendar.getInstance();
-            timeStart.add(Calendar.HOUR_OF_DAY,3);
-            timeStart.set(Calendar.MINUTE,0);
+            timeStart.set(Calendar.HOUR_OF_DAY,3);
+            timeStart.set(Calendar.MINUTE,30);
             Calendar timeEnd = (Calendar) timeStart.clone();
-            timeEnd.add(Calendar.HOUR_OF_DAY, 1);
+            timeEnd.set(Calendar.HOUR_OF_DAY, 8);
+            timeEnd.set(Calendar.MINUTE,30);
             Event event = new Event(1, timeStart, timeEnd, "event 1", "home", eventColor);
             event.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.avatar));
             event.setTitle("event 1 with title");
@@ -77,36 +66,21 @@ public class MainActivity extends AppCompatActivity{
         }
 
         {
-            int eventColor = getResources().getColor(R.color.eventColor3);
+            int eventColor = getResources().getColor(R.color.eventColor);
             Calendar timeStart = Calendar.getInstance();
-            timeStart.set(Calendar.HOUR_OF_DAY,3);
+            timeStart.set(Calendar.HOUR_OF_DAY,10);
             timeStart.set(Calendar.MINUTE,0);
             Calendar timeEnd = (Calendar) timeStart.clone();
-            timeEnd.add(Calendar.HOUR_OF_DAY, 2);
-            timeEnd.add(Calendar.MINUTE,30);
-            Event event = new Event(2, timeStart, timeEnd, "event 1", "home", eventColor);
+            timeEnd.set(Calendar.HOUR_OF_DAY, 12);
+            timeEnd.set(Calendar.MINUTE,30);
+            Event event = new Event(2, timeStart, timeEnd, "event 2", "work", eventColor);
             event.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.avatar));
-            event.setTitle("event 2 this is test");
-            event.setDescription("Yuong alsdf");
-            event.setQuote("Google map");
+            event.setTitle("event 2 with title");
+            event.setDescription("Click me");
+            event.setQuote("Here map");
             events.add(event);
         }
 
-        {
-            int eventColor = getResources().getColor(R.color.eventColor4);
-            Calendar timeStart = Calendar.getInstance();
-            timeStart.set(Calendar.HOUR_OF_DAY,16);
-            timeStart.set(Calendar.MINUTE,15);
-            Calendar timeEnd = (Calendar) timeStart.clone();
-            timeEnd.add(Calendar.HOUR_OF_DAY, 1);
-            timeEnd.add(Calendar.MINUTE,30);
-            Event event = new Event(3, timeStart, timeEnd, "event 6", "house", eventColor);
-            event.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.avatar));
-            event.setTitle("event 2 this is test");
-            event.setDescription("Yuong alsdf");
-            event.setQuote("Google map");
-            events.add(event);
-        }
 
         dayView.setEvents(events);
     }
