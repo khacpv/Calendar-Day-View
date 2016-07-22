@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/item_event_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:orientation="horizontal"
         android:paddingBottom="8dp">
         <TextView

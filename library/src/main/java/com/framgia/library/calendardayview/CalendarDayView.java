@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import com.framgia.library.calendardayview.data.IEvent;
+import com.framgia.library.calendardayview.decoration.CdvDecoration;
+import com.framgia.library.calendardayview.decoration.CdvDecorationDefault;
 import java.util.Calendar;
 import java.util.List;
 
@@ -18,7 +20,7 @@ public class CalendarDayView extends FrameLayout {
 
     private int mDayHeight = 300;
 
-    private int mEventPaddingLeft = 0;
+    private int mEventMarginLeft = 0;
 
     private int mHourWidth = 120;
 
@@ -26,15 +28,15 @@ public class CalendarDayView extends FrameLayout {
 
     private int mSeparateHourHeight = 0;
 
-    private LinearLayout mLayoutContainer;
+    private LinearLayout mLayoutDayView;
 
     private FrameLayout mLayoutEvent;
 
     private FrameLayout mLayoutPopup;
 
-    private EventView.OnEventClickListener mEventClickListener;
+    private CdvDecoration mDecoration;
 
-    private EventPopup.OnEventPopupClickListener mPopupClickListener;
+    private List<IEvent> mEvents;
 
     public CalendarDayView(Context context) {
         super(context);
@@ -54,15 +56,16 @@ public class CalendarDayView extends FrameLayout {
     private void init(AttributeSet attrs) {
         LayoutInflater.from(getContext()).inflate(R.layout.view_day_calendar, this, true);
 
-        mLayoutContainer = (LinearLayout) findViewById(R.id.container);
+        mLayoutDayView = (LinearLayout) findViewById(R.id.dayview_container);
         mLayoutEvent = (FrameLayout) findViewById(R.id.event_container);
         mLayoutPopup = (FrameLayout) findViewById(R.id.popup_container);
 
         if(attrs != null){
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CalendarDayView);
             try {
-                mEventPaddingLeft = a.getDimensionPixelSize(R.styleable.CalendarDayView_eventPaddingLeft,
-                        mEventPaddingLeft);
+                mEventMarginLeft =
+                        a.getDimensionPixelSize(R.styleable.CalendarDayView_eventMarginLeft,
+                                mEventMarginLeft);
                 mDayHeight = a.getDimensionPixelSize(R.styleable.CalendarDayView_dayHeight,
                         mDayHeight);
             }finally {
@@ -70,43 +73,46 @@ public class CalendarDayView extends FrameLayout {
             }
         }
 
-        addDayViews();
+        mDecoration = new CdvDecorationDefault(getContext());
     }
 
-    private void addDayViews() {
-        mLayoutContainer.removeAllViews();
+    private void refresh() {
+        drawDayViews();
+
+        drawEvents();
+    }
+
+    private void drawDayViews() {
+        mLayoutDayView.removeAllViews();
         DayView dayView = null;
         for (int i = 0; i < 25; i++) {
             dayView = new DayView(getContext());
             dayView.setText(String.format("%1$2s:00", i));
-            mLayoutContainer.addView(dayView);
+            mLayoutDayView.addView(dayView);
         }
         mHourWidth = (int) dayView.getHourTextWidth();
         mTimeHeight = (int) dayView.getHourTextHeight();
         mSeparateHourHeight = (int) dayView.getSeparateHeight();
     }
 
-    public void setEvents(List<IEvent> events) {
+    private void drawEvents() {
         mLayoutEvent.removeAllViews();
         mLayoutPopup.removeAllViews();
 
-        for (IEvent event : events) {
-            // add event views
-            EventView eventView = new EventView(getContext());
-            eventView.setEvent(event);
+        for (IEvent event : mEvents) {
             Rect rect = getEventBound(event);
-            eventView.setPosition(rect, -mTimeHeight, mTimeHeight - mSeparateHourHeight * 2);
-            eventView.setOnEventClickListener(mEventClickListener);
-            mLayoutEvent.addView(eventView, eventView.getLayoutParams());
+
+            // add event view
+            EventView eventView =
+                    getDecoration().getEventView(event, rect, mTimeHeight, mSeparateHourHeight);
+            if (eventView != null) {
+                mLayoutEvent.addView(eventView, eventView.getLayoutParams());
+            }
 
             // add popup views
-            if(event.getPopup() != null) {
-                EventPopup popup = new EventPopup(getContext());
-                popup.setEvent(event);
-                popup.setPosition(rect);
-                popup.setOnPopupClickListener(mPopupClickListener);
-                popup.hide();
-                eventView.addPopupView(popup);
+            EventPopup popup = getDecoration().getEventPopup(event, eventView, rect, mTimeHeight,
+                    mSeparateHourHeight);
+            if (popup != null) {
                 mLayoutPopup.addView(popup, popup.getLayoutParams());
             }
         }
@@ -116,7 +122,7 @@ public class CalendarDayView extends FrameLayout {
         Rect rect = new Rect();
         rect.top = getPositionOfTime(event.getStartTime()) + mTimeHeight / 2 + mSeparateHourHeight;
         rect.bottom = getPositionOfTime(event.getEndTime()) + mTimeHeight / 2 + mSeparateHourHeight;
-        rect.left = mHourWidth + mEventPaddingLeft;
+        rect.left = mHourWidth + mEventMarginLeft;
         rect.right = getWidth();
         return rect;
     }
@@ -127,11 +133,16 @@ public class CalendarDayView extends FrameLayout {
         return hour * mDayHeight + minute * mDayHeight / 60;
     }
 
-    public void setOnEventClickListener(EventView.OnEventClickListener listener){
-        this.mEventClickListener = listener;
+    public void setEvents(List<IEvent> events) {
+        this.mEvents = events;
+        refresh();
     }
 
-    public void setOnPopupClickListener(EventPopup.OnEventPopupClickListener listener){
-        this.mPopupClickListener = listener;
+    public void setDecorator(CdvDecoration decorator) {
+        this.mDecoration = decorator;
+    }
+
+    public CdvDecoration getDecoration() {
+        return mDecoration;
     }
 }

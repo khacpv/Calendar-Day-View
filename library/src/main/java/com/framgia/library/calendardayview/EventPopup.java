@@ -22,15 +22,15 @@ public class EventPopup extends FrameLayout {
 
     protected IEvent mEvent;
     protected OnEventPopupClickListener mPopupClickListener;
-    private int mShowDuration = 3000;
-    private TextView mQuote;
-    private CardView mCardView;
-    private ImageView mImvStart;
-    private ImageView mImvEnd;
-    private TextView mTitle;
-    private TextView mDescription;
-    private AlphaAnimation mFadeOutAnim = new AlphaAnimation(1.0f, 0.0f);
-    private Animation.AnimationListener mFadeOutListener = new Animation.AnimationListener() {
+    protected int mShowDuration = 3000;
+    protected TextView mQuote;
+    protected CardView mCardView;
+    protected ImageView mImvStart;
+    protected ImageView mImvEnd;
+    protected TextView mTitle;
+    protected TextView mDescription;
+    protected AlphaAnimation mFadeOutAnim = new AlphaAnimation(1.0f, 0.0f);
+    protected Animation.AnimationListener mFadeOutListener = new Animation.AnimationListener() {
         @Override
         public void onAnimationStart(Animation animation) {
 
@@ -125,10 +125,6 @@ public class EventPopup extends FrameLayout {
         params.topMargin = rect.top + 2;
         params.leftMargin = rect.left;
         setLayoutParams(params);
-    }
-
-    public IEvent getEvent() {
-        return this.mEvent;
     }
 
     public void setEvent(IEvent event) {

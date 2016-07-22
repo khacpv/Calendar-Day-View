@@ -3,6 +3,7 @@ package com.framgia.library.calendardayview;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,15 +24,15 @@ public class EventView extends FrameLayout {
 
     protected OnEventClickListener mEventClickListener;
 
-    private RelativeLayout mEventHeader;
+    protected RelativeLayout mEventHeader;
 
-    private LinearLayout mEventContent;
+    protected LinearLayout mEventContent;
 
-    private TextView mEventHeaderText1;
+    protected TextView mEventHeaderText1;
 
-    private TextView mEventHeaderText2;
+    protected TextView mEventHeaderText2;
 
-    private TextView mEventName;
+    protected TextView mEventName;
 
     public EventView(Context context) {
         super(context);
@@ -95,10 +96,6 @@ public class EventView extends FrameLayout {
         this.mPopup = popup;
     }
 
-    public IEvent getEvent() {
-        return this.mEvent;
-    }
-
     public void setEvent(IEvent event) {
         this.mEvent = event;
         mEventName.setText(String.valueOf(event.getName()));
@@ -116,6 +113,7 @@ public class EventView extends FrameLayout {
         FrameLayout.LayoutParams params =
                 new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
+        Log.e("TAG", "header height " + getHeaderHeight());
         params.topMargin = rect.top - getHeaderHeight() - getHeaderPadding() + topMargin;
         params.height = rect.height() + getHeaderHeight() + getHeaderPadding() + bottomMargin;
         params.leftMargin = rect.left;

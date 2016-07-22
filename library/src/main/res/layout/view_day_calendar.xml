@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     >
     <LinearLayout
-        android:id="@+id/container"
+        android:id="@+id/dayview_container"
         android:layout_width="wrap_content"
         android:minWidth="20dp"
         android:layout_height="match_parent"

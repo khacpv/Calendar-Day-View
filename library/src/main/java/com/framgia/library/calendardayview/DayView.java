@@ -45,7 +45,11 @@ public class DayView extends FrameLayout {
     }
 
     public float getHourTextWidth(){
-        return mTextHour.getPaint().measureText(mTextHour.getText().toString());
+        LinearLayout.LayoutParams param = (LinearLayout.LayoutParams) mTextHour.getLayoutParams();
+        float measureTextWidth = mTextHour.getPaint().measureText("12:00".toString());
+        return Math.max(measureTextWidth, param.width)
+                + param.getMarginEnd()
+                + param.getMarginStart();
     }
 
     public float getHourTextHeight() {

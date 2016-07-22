@@ -10,13 +10,15 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:background="#FFF"
+        android:paddingTop="@dimen/dayHeight"
         >
         <com.framgia.library.calendardayview.CalendarDayView
             android:id="@+id/calendar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:eventPaddingLeft="10dp"
-            android:background="#FFF"
+            android:layout_height="wrap_content"
+            app:eventMarginLeft="0dp"
             app:dayHeight="@dimen/dayHeight"/>
     </ScrollView>
 

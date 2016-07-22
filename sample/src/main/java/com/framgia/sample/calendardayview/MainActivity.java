@@ -10,6 +10,7 @@ import com.framgia.library.calendardayview.EventPopup;
 import com.framgia.library.calendardayview.EventView;
 import com.framgia.library.calendardayview.data.IEvent;
 import com.framgia.library.calendardayview.data.IPopupEvent;
+import com.framgia.library.calendardayview.decoration.CdvDecorationDefault;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         dayView = (CalendarDayView)findViewById(R.id.calendar);
-        dayView.setOnEventClickListener(new EventView.OnEventClickListener(){
+
+        ((CdvDecorationDefault)(dayView.getDecoration())).setOnEventClickListener(new EventView.OnEventClickListener(){
             @Override
             public void onEventClick(EventView view, IEvent data) {
 
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        dayView.setOnPopupClickListener(new EventPopup.OnEventPopupClickListener() {
+        ((CdvDecorationDefault)(dayView.getDecoration())).setOnPopupClickListener(new EventPopup.OnEventPopupClickListener() {
             @Override
             public void onPopupClick(EventPopup view, IEvent event, IPopupEvent data) {
                 Log.e("TAG", "onPopupClick:" + event.getName());
@@ -58,10 +60,10 @@ public class MainActivity extends AppCompatActivity{
             int eventColor = getResources().getColor(R.color.eventColor);
             Calendar timeStart = Calendar.getInstance();
             timeStart.set(Calendar.HOUR_OF_DAY,3);
-            timeStart.set(Calendar.MINUTE,30);
+            timeStart.set(Calendar.MINUTE,0);
             Calendar timeEnd = (Calendar) timeStart.clone();
             timeEnd.set(Calendar.HOUR_OF_DAY, 8);
-            timeEnd.set(Calendar.MINUTE,30);
+            timeEnd.set(Calendar.MINUTE,0);
             Event event = new Event(1, timeStart, timeEnd, "event 1", "home", eventColor);
             event.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.avatar));
             event.setTitle("event 1 with title");
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity{
             timeStart.set(Calendar.MINUTE,0);
             Calendar timeEnd = (Calendar) timeStart.clone();
             timeEnd.set(Calendar.HOUR_OF_DAY, 12);
-            timeEnd.set(Calendar.MINUTE,30);
+            timeEnd.set(Calendar.MINUTE,0);
             Event event = new Event(2, timeStart, timeEnd, "event 2", "work", eventColor);
             event.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.avatar));
             event.setTitle("event 2 with title");
