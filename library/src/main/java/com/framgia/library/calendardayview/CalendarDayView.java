@@ -86,8 +86,7 @@ public class CalendarDayView extends FrameLayout {
         mLayoutDayView.removeAllViews();
         DayView dayView = null;
         for (int i = 0; i < 25; i++) {
-            dayView = new DayView(getContext());
-            dayView.setText(String.format("%1$2s:00", i));
+            dayView = getDecoration().getDayView(i);
             mLayoutDayView.addView(dayView);
         }
         mHourWidth = (int) dayView.getHourTextWidth();

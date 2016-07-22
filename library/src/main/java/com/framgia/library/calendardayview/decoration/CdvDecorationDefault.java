@@ -2,6 +2,7 @@ package com.framgia.library.calendardayview.decoration;
 
 import android.content.Context;
 import android.graphics.Rect;
+import com.framgia.library.calendardayview.DayView;
 import com.framgia.library.calendardayview.EventPopup;
 import com.framgia.library.calendardayview.EventView;
 import com.framgia.library.calendardayview.data.IEvent;
@@ -41,6 +42,13 @@ public class CdvDecorationDefault implements CdvDecoration {
         popup.hide();
         eventView.addPopupView(popup);
         return popup;
+    }
+
+    @Override
+    public DayView getDayView(int hour) {
+        DayView dayView = new DayView(mContext);
+        dayView.setText(String.format("%1$2s:00", hour));
+        return dayView;
     }
 
     public void setOnEventClickListener(EventView.OnEventClickListener listener) {
