@@ -7,6 +7,8 @@
         <attr name="eventMarginLeft" format="dimension"/>
         <attr name="lineColor" format="color"/>
         <attr name="textHourSize" format="dimension"/>
+        <attr name="startHour" format="integer"/>
+        <attr name="endHour" format="integer"/>
     </declare-styleable>
 
 </resources>

@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import com.framgia.library.calendardayview.data.IEvent;
 import com.framgia.library.calendardayview.decoration.CdvDecoration;
 import com.framgia.library.calendardayview.decoration.CdvDecorationDefault;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -27,6 +28,10 @@ public class CalendarDayView extends FrameLayout {
     private int mTimeHeight = 120;
 
     private int mSeparateHourHeight = 0;
+
+    private int mStartHour = 0;
+
+    private int mEndHour = 24;
 
     private LinearLayout mLayoutDayView;
 
@@ -68,15 +73,20 @@ public class CalendarDayView extends FrameLayout {
                                 mEventMarginLeft);
                 mDayHeight = a.getDimensionPixelSize(R.styleable.CalendarDayView_dayHeight,
                         mDayHeight);
+                mStartHour = a.getInt(R.styleable.CalendarDayView_startHour, mStartHour);
+                mEndHour = a.getInt(R.styleable.CalendarDayView_endHour, mEndHour);
             }finally {
                 a.recycle();
             }
         }
 
+        mEvents = new ArrayList<>();
         mDecoration = new CdvDecorationDefault(getContext());
+
+        refresh();
     }
 
-    private void refresh() {
+    public void refresh() {
         drawDayViews();
 
         drawEvents();
@@ -85,7 +95,7 @@ public class CalendarDayView extends FrameLayout {
     private void drawDayViews() {
         mLayoutDayView.removeAllViews();
         DayView dayView = null;
-        for (int i = 0; i < 25; i++) {
+        for (int i = mStartHour; i <= mEndHour; i++) {
             dayView = getDecoration().getDayView(i);
             mLayoutDayView.addView(dayView);
         }
@@ -127,7 +137,7 @@ public class CalendarDayView extends FrameLayout {
     }
 
     private int getPositionOfTime(Calendar calendar) {
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY) - mStartHour;
         int minute = calendar.get(Calendar.MINUTE);
         return hour * mDayHeight + minute * mDayHeight / 60;
     }
@@ -137,8 +147,18 @@ public class CalendarDayView extends FrameLayout {
         refresh();
     }
 
+    public void setLimitTime(int startHour, int endHour) {
+        if (startHour >= endHour) {
+            throw new IllegalArgumentException("start hour must before end hour");
+        }
+        mStartHour = startHour;
+        mEndHour = endHour;
+        refresh();
+    }
+
     public void setDecorator(CdvDecoration decorator) {
         this.mDecoration = decorator;
+        refresh();
     }
 
     public CdvDecoration getDecoration() {
