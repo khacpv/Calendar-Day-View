@@ -70,7 +70,9 @@ public class EventView extends FrameLayout {
         OnClickListener eventItemClickListener = new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mEventClickListener.onEventViewClick(v, EventView.this, mEvent);
+                if(mEventClickListener != null) {
+                    mEventClickListener.onEventViewClick(v, EventView.this, mEvent);
+                }
             }
         };
 
@@ -113,7 +115,6 @@ public class EventView extends FrameLayout {
         FrameLayout.LayoutParams params =
                 new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
-        Log.e("TAG", "header height " + getHeaderHeight());
         params.topMargin = rect.top - getHeaderHeight() - getHeaderPadding() + topMargin;
         params.height = rect.height() + getHeaderHeight() + getHeaderPadding() + bottomMargin;
         params.leftMargin = rect.left;
