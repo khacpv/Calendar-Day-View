@@ -14,8 +14,8 @@
             android:id="@+id/text_hour"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:gravity="right"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
             android:text="12:00"
             />
         <LinearLayout

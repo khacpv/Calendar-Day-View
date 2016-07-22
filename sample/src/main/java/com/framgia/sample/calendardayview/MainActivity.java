@@ -28,7 +28,12 @@ public class MainActivity extends AppCompatActivity{
         dayView.setOnEventClickListener(new EventView.OnEventClickListener(){
             @Override
             public void onEventClick(EventView view, IEvent data) {
-                EventPopup popup = view.getPopup();
+
+            }
+
+            @Override
+            public void onEventViewClick(View view, EventView eventView, IEvent data) {
+                EventPopup popup = eventView.getPopup();
                 if (popup != null) {
                     popup.show();
                 }
