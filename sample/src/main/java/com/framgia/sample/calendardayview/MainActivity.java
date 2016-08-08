@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity{
             event.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.avatar));
             event.setTitle("event 1 with title");
             event.setDescription("Yuong alsdf");
-            event.setQuote("my quote test");
             events.add(event);
         }
 
@@ -84,7 +83,6 @@ public class MainActivity extends AppCompatActivity{
             event.setBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.avatar));
             event.setTitle("event 2 with title");
             event.setDescription("Click me");
-            event.setQuote("Here map");
             events.add(event);
         }
 

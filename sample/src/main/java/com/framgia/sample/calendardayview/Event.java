@@ -21,7 +21,7 @@ public class Event implements IEvent, IPopupEvent {
     private Bitmap mImage;
     private String mTitle;
     private String mDescription;
-    private String mQuote;
+    private String mQuote = "";
 
     public Event() {
 
