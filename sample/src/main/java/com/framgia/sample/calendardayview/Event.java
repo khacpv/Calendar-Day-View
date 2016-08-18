@@ -130,7 +130,7 @@ public class Event implements IEvent, IPopupEvent {
 
     @Override
     public Boolean isAutohide() {
-        return true;
+        return false;
     }
 
     public void setQuote(String quote) {

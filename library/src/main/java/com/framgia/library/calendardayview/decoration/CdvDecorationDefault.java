@@ -39,7 +39,6 @@ public class CdvDecorationDefault implements CdvDecoration {
         popup.setEvent(event);
         popup.setPosition(eventBound);
         popup.setOnPopupClickListener(mPopupClickListener);
-        popup.hide();
         eventView.addPopupView(popup);
         return popup;
     }
