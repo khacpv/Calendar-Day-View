@@ -13,14 +13,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.framgia.library.calendardayview.data.IEvent;
-import com.framgia.library.calendardayview.data.IPopupEvent;
+import com.framgia.library.calendardayview.data.IPopup;
 
 /**
  * Created by FRAMGIA\pham.van.khac on 08/07/2016.
  */
-public class EventPopup extends FrameLayout {
+public class PopupView extends FrameLayout {
 
-    protected IEvent mEvent;
+    protected IPopup mPopup;
     protected OnEventPopupClickListener mPopupClickListener;
     protected int mShowDuration = 3000;
     protected TextView mQuote;
@@ -55,17 +55,17 @@ public class EventPopup extends FrameLayout {
         }
     };
 
-    public EventPopup(Context context) {
+    public PopupView(Context context) {
         super(context);
         init(null);
     }
 
-    public EventPopup(Context context, AttributeSet attrs) {
+    public PopupView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public EventPopup(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PopupView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
@@ -84,7 +84,7 @@ public class EventPopup extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (mPopupClickListener != null) {
-                    mPopupClickListener.onQuoteClick(v, mEvent, mEvent.getPopup());
+                    mPopupClickListener.onQuoteClick(v, mPopup);
                 }
             }
         });
@@ -93,7 +93,7 @@ public class EventPopup extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (mPopupClickListener != null) {
-                    mPopupClickListener.onPopupClick(EventPopup.this, mEvent, mEvent.getPopup());
+                    mPopupClickListener.onPopupClick(PopupView.this, mPopup);
                 }
             }
         });
@@ -101,7 +101,7 @@ public class EventPopup extends FrameLayout {
 
     public void show() {
         setVisibility(View.VISIBLE);
-        if (this.mEvent.getPopup().isAutohide()) {
+        if (this.mPopup.isAutohide()) {
             removeCallbacks(mHidePopup);
             postDelayed(mHidePopup, mShowDuration);
         }
@@ -127,13 +127,13 @@ public class EventPopup extends FrameLayout {
         setLayoutParams(params);
     }
 
-    public void setEvent(IEvent event) {
-        this.mEvent = event;
-        mDescription.setText(String.valueOf(event.getPopup().getDescription()));
-        mTitle.setText(String.valueOf(event.getPopup().getTitle()));
-        mImvStart.setImageBitmap(event.getPopup().getImageStart());
-        mImvEnd.setImageBitmap(event.getPopup().getImageEnd());
-        mQuote.setText(String.valueOf(event.getPopup().getQuote()));
+    public void setPopup(IPopup popup) {
+        this.mPopup = popup;
+        mDescription.setText(String.valueOf(popup.getDescription()));
+        mTitle.setText(String.valueOf(popup.getTitle()));
+        mImvStart.setImageBitmap(popup.getImageStart());
+        mImvEnd.setImageBitmap(popup.getImageEnd());
+        mQuote.setText(String.valueOf(popup.getQuote()));
     }
 
     @Override
@@ -146,8 +146,8 @@ public class EventPopup extends FrameLayout {
     }
 
     public interface OnEventPopupClickListener {
-        void onPopupClick(EventPopup view, IEvent event, IPopupEvent data);
+        void onPopupClick(PopupView view, IPopup data);
 
-        void onQuoteClick(View view, IEvent event, IPopupEvent data);
+        void onQuoteClick(View view, IPopup data);
     }
 }

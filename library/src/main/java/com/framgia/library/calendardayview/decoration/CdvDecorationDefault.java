@@ -3,9 +3,10 @@ package com.framgia.library.calendardayview.decoration;
 import android.content.Context;
 import android.graphics.Rect;
 import com.framgia.library.calendardayview.DayView;
-import com.framgia.library.calendardayview.EventPopup;
+import com.framgia.library.calendardayview.PopupView;
 import com.framgia.library.calendardayview.EventView;
 import com.framgia.library.calendardayview.data.IEvent;
+import com.framgia.library.calendardayview.data.IPopup;
 
 /**
  * Created by FRAMGIA\pham.van.khac on 22/07/2016.
@@ -16,7 +17,7 @@ public class CdvDecorationDefault implements CdvDecoration {
 
     private EventView.OnEventClickListener mEventClickListener;
 
-    private EventPopup.OnEventPopupClickListener mPopupClickListener;
+    private PopupView.OnEventPopupClickListener mPopupClickListener;
 
     public CdvDecorationDefault(Context context) {
         this.mContext = context;
@@ -33,14 +34,12 @@ public class CdvDecorationDefault implements CdvDecoration {
     }
 
     @Override
-    public EventPopup getEventPopup(IEvent event, EventView eventView, Rect eventBound,
-            int hourHeight, int seperateHeight) {
-        EventPopup popup = new EventPopup(mContext);
-        popup.setEvent(event);
-        popup.setPosition(eventBound);
-        popup.setOnPopupClickListener(mPopupClickListener);
-        eventView.addPopupView(popup);
-        return popup;
+    public PopupView getPopupView(IPopup popup, Rect eventBound, int hourHeight, int seperateH) {
+        PopupView view = new PopupView(mContext);
+        view.setPopup(popup);
+        view.setPosition(eventBound);
+        view.setOnPopupClickListener(mPopupClickListener);
+        return view;
     }
 
     @Override
@@ -54,7 +53,7 @@ public class CdvDecorationDefault implements CdvDecoration {
         this.mEventClickListener = listener;
     }
 
-    public void setOnPopupClickListener(EventPopup.OnEventPopupClickListener listener) {
+    public void setOnPopupClickListener(PopupView.OnEventPopupClickListener listener) {
         this.mPopupClickListener = listener;
     }
 }

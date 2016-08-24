@@ -2,13 +2,12 @@ package com.framgia.sample.calendardayview;
 
 import android.graphics.Bitmap;
 import com.framgia.library.calendardayview.data.IEvent;
-import com.framgia.library.calendardayview.data.IPopupEvent;
 import java.util.Calendar;
 
 /**
  * Created by FRAMGIA\pham.van.khac on 07/07/2016.
  */
-public class Event implements IEvent, IPopupEvent {
+public class Event implements IEvent {
 
     private long mId;
     private Calendar mStartTime;
@@ -16,12 +15,6 @@ public class Event implements IEvent, IPopupEvent {
     private String mName;
     private String mLocation;
     private int mColor;
-
-    // popup
-    private Bitmap mImage;
-    private String mTitle;
-    private String mDescription;
-    private String mQuote = "";
 
     public Event() {
 
@@ -81,59 +74,7 @@ public class Event implements IEvent, IPopupEvent {
         return mColor;
     }
 
-    @Override
-    public IPopupEvent getPopup() {
-        return this;
-    }
-
     public void setColor(int color) {
         this.mColor = color;
-    }
-
-    public Bitmap getImage() {
-        return mImage;
-    }
-
-    public void setBitmap(Bitmap image) {
-        this.mImage = image;
-    }
-
-    public String getTitle() {
-        return mTitle;
-    }
-
-    public void setTitle(String title) {
-        this.mTitle = title;
-    }
-
-    public String getDescription() {
-        return mDescription;
-    }
-
-    public void setDescription(String description) {
-        this.mDescription = description;
-    }
-
-    public String getQuote() {
-        return mQuote;
-    }
-
-    @Override
-    public Bitmap getImageStart() {
-        return getImage();
-    }
-
-    @Override
-    public Bitmap getImageEnd() {
-        return null;
-    }
-
-    @Override
-    public Boolean isAutohide() {
-        return false;
-    }
-
-    public void setQuote(String quote) {
-        this.mQuote = quote;
     }
 }

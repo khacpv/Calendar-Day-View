@@ -3,7 +3,6 @@ package com.framgia.library.calendardayview;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +18,6 @@ import com.framgia.library.calendardayview.data.IEvent;
 public class EventView extends FrameLayout {
 
     protected IEvent mEvent;
-
-    protected EventPopup mPopup;
 
     protected OnEventClickListener mEventClickListener;
 
@@ -88,14 +85,6 @@ public class EventView extends FrameLayout {
     @Override
     public void setOnClickListener(final OnClickListener l) {
         throw new UnsupportedOperationException("you should use setOnEventClickListener()");
-    }
-
-    public EventPopup getPopup(){
-        return mPopup;
-    }
-
-    public void addPopupView(EventPopup popup) {
-        this.mPopup = popup;
     }
 
     public void setEvent(IEvent event) {
