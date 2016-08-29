@@ -131,8 +131,9 @@ public class PopupView extends FrameLayout {
         this.mPopup = popup;
         mDescription.setText(String.valueOf(popup.getDescription()));
         mTitle.setText(String.valueOf(popup.getTitle()));
-        mImvStart.setImageBitmap(popup.getImageStart());
-        mImvEnd.setImageBitmap(popup.getImageEnd());
+        if(mPopupClickListener != null){
+            mPopupClickListener.onLoadData(mImvStart,mImvEnd, popup);
+        }
         mQuote.setText(String.valueOf(popup.getQuote()));
     }
 
@@ -149,5 +150,7 @@ public class PopupView extends FrameLayout {
         void onPopupClick(PopupView view, IPopup data);
 
         void onQuoteClick(View view, IPopup data);
+
+        void onLoadData(ImageView start, ImageView end, IPopup data);
     }
 }

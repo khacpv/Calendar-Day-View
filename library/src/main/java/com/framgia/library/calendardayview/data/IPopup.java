@@ -14,9 +14,9 @@ public interface IPopup extends ITimeDuration {
 
     String getQuote();
 
-    Bitmap getImageStart();
+    String getImageStart();
 
-    Bitmap getImageEnd();
+    String getImageEnd();
 
     Boolean isAutohide();
 }

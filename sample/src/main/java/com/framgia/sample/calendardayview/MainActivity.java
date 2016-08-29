@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import com.framgia.library.calendardayview.CalendarDayView;
 import com.framgia.library.calendardayview.PopupView;
 import com.framgia.library.calendardayview.EventView;
@@ -53,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
                     public void onQuoteClick(View view, IPopup data) {
                         Log.e("TAG", "onQuoteClick:" + data.getTitle());
                     }
+
+                    @Override
+                    public void onLoadData(ImageView start, ImageView end, IPopup data) {
+                        start.setImageResource(R.drawable.avatar);
+                    }
                 });
 
         events = new ArrayList<>();
@@ -82,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             Popup popup = new Popup();
             popup.setStartTime(timeStart);
             popup.setEndTime(timeEnd);
-            popup.setImageStart(BitmapFactory.decodeResource(getResources(), R.drawable.avatar));
+            popup.setImageStart("http://sample.com/image.png");
             popup.setTitle("event 1 with title");
             popup.setDescription("Yuong alsdf");
             popups.add(popup);
@@ -99,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             Popup popup = new Popup();
             popup.setStartTime(timeStart);
             popup.setEndTime(timeEnd);
-            popup.setImageStart(BitmapFactory.decodeResource(getResources(), R.drawable.avatar));
+            popup.setImageStart("http://sample.com/image.png");
             popup.setTitle("event 2 with title");
             popup.setDescription("Yuong alsdf");
             popups.add(popup);

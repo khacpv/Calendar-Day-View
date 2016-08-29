@@ -12,8 +12,8 @@ public class Popup implements IPopup {
     Calendar startTime;
     Calendar endTime;
 
-    Bitmap imageStart;
-    Bitmap imageEnd;
+    String imageStart;
+    String imageEnd;
 
     String title;
 
@@ -52,21 +52,21 @@ public class Popup implements IPopup {
         return quote;
     }
 
-    public void setImageStart(Bitmap imageStart) {
+    public void setImageStart(String imageStart) {
         this.imageStart = imageStart;
     }
 
     @Override
-    public Bitmap getImageStart() {
+    public String getImageStart() {
         return imageStart;
     }
 
-    public void setImageEnd(Bitmap imageEnd) {
+    public void setImageEnd(String imageEnd) {
         this.imageEnd = imageEnd;
     }
 
     @Override
-    public Bitmap getImageEnd() {
+    public String getImageEnd() {
         return imageEnd;
     }
 

@@ -36,9 +36,9 @@ public class CdvDecorationDefault implements CdvDecoration {
     @Override
     public PopupView getPopupView(IPopup popup, Rect eventBound, int hourHeight, int seperateH) {
         PopupView view = new PopupView(mContext);
+        view.setOnPopupClickListener(mPopupClickListener);
         view.setPopup(popup);
         view.setPosition(eventBound);
-        view.setOnPopupClickListener(mPopupClickListener);
         return view;
     }
 
