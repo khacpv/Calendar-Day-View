@@ -13,11 +13,11 @@ import com.framgia.library.calendardayview.data.IPopup;
  */
 public class CdvDecorationDefault implements CdvDecoration {
 
-    private Context mContext;
+    protected Context mContext;
 
-    private EventView.OnEventClickListener mEventClickListener;
+    protected EventView.OnEventClickListener mEventClickListener;
 
-    private PopupView.OnEventPopupClickListener mPopupClickListener;
+    protected PopupView.OnEventPopupClickListener mPopupClickListener;
 
     public CdvDecorationDefault(Context context) {
         this.mContext = context;
