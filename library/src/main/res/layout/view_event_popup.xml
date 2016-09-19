@@ -56,16 +56,17 @@
                         android:singleLine="true"
                         android:lines="1"
                         android:ellipsize="end"
-                        android:text="test"
+                        android:text="tasdest"
                         android:textSize="24sp"
                         />
                     <TextView
                         android:id="@+id/desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="description"
+                        android:text="descraiption"
                         android:singleLine="true"
                         android:lines="1"
+                        android:textColor="@android:color/darker_gray"
                         android:ellipsize="end"
                         android:textSize="16sp"
                         />
