@@ -1,6 +1,8 @@
 # Calendar-Day-View
 Calendar Day View
 
+[![](https://jitpack.io/v/khacpv/Calendar-Day-View.svg)](https://jitpack.io/#khacpv/Calendar-Day-View)
+
 <a><img src="./image/screenshot.png" width="200"></a>
 
 ### install:
