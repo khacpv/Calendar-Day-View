@@ -124,6 +124,7 @@ public class PopupView extends FrameLayout {
                         ViewGroup.LayoutParams.WRAP_CONTENT);
         params.topMargin = rect.top + 2;
         params.leftMargin = rect.left;
+        params.height = rect.height();
         setLayoutParams(params);
     }
 

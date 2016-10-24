@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             timeStart.set(Calendar.HOUR_OF_DAY, 10);
             timeStart.set(Calendar.MINUTE, 0);
             Calendar timeEnd = (Calendar) timeStart.clone();
-            timeEnd.set(Calendar.HOUR_OF_DAY, 20);
+            timeEnd.set(Calendar.HOUR_OF_DAY, 12);
             timeEnd.set(Calendar.MINUTE, 0);
             Event event = new Event(1, timeStart, timeEnd, "Shift time", "Hockaido", eventColor);
 
@@ -79,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
 
         {
             Calendar timeStart = Calendar.getInstance();
-            timeStart.set(Calendar.HOUR_OF_DAY, 11);
+            timeStart.set(Calendar.HOUR_OF_DAY, 15);
             timeStart.set(Calendar.MINUTE, 0);
             Calendar timeEnd = (Calendar) timeStart.clone();
-            timeEnd.set(Calendar.HOUR_OF_DAY, 12);
+            timeEnd.set(Calendar.HOUR_OF_DAY, 18);
             timeEnd.set(Calendar.MINUTE, 0);
 
             Popup popup = new Popup();
@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
         {
             Calendar timeStart = Calendar.getInstance();
-            timeStart.set(Calendar.HOUR_OF_DAY, 15);
+            timeStart.set(Calendar.HOUR_OF_DAY, 20);
             timeStart.set(Calendar.MINUTE, 0);
             Calendar timeEnd = (Calendar) timeStart.clone();
-            timeEnd.set(Calendar.HOUR_OF_DAY, 16);
+            timeEnd.set(Calendar.HOUR_OF_DAY, 22);
             timeEnd.set(Calendar.MINUTE, 0);
 
             Popup popup = new Popup();
