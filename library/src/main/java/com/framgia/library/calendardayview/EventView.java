@@ -104,8 +104,13 @@ public class EventView extends FrameLayout {
         FrameLayout.LayoutParams params =
                 new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.topMargin = rect.top - getHeaderHeight() - getHeaderPadding() + topMargin;
-        params.height = rect.height() + getHeaderHeight() + getHeaderPadding() + bottomMargin;
+        params.topMargin = rect.top - getHeaderHeight() - getHeaderPadding() + topMargin
+                - getResources().getDimensionPixelSize(R.dimen.cdv_extra_dimen);
+        params.height = rect.height()
+                + getHeaderHeight()
+                + getHeaderPadding()
+                + bottomMargin
+                + getResources().getDimensionPixelSize(R.dimen.cdv_extra_dimen);
         params.leftMargin = rect.left;
         setLayoutParams(params);
     }

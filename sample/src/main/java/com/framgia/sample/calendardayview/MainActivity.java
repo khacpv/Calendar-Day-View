@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         events = new ArrayList<>();
-        popups = new ArrayList<>();
 
         {
             int eventColor = getResources().getColor(R.color.eventColor);
@@ -70,12 +69,14 @@ public class MainActivity extends AppCompatActivity {
             timeStart.set(Calendar.HOUR_OF_DAY, 11);
             timeStart.set(Calendar.MINUTE, 0);
             Calendar timeEnd = (Calendar) timeStart.clone();
-            timeEnd.set(Calendar.HOUR_OF_DAY, 12);
+            timeEnd.set(Calendar.HOUR_OF_DAY, 13);
             timeEnd.set(Calendar.MINUTE, 30);
             Event event = new Event(1, timeStart, timeEnd, "Shift time", "Hockaido", eventColor);
 
             events.add(event);
         }
+
+        popups = new ArrayList<>();
 
         {
             Calendar timeStart = Calendar.getInstance();

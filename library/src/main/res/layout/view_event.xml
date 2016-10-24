@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:orientation="horizontal"
-        android:paddingBottom="8dp">
+        android:paddingBottom="@dimen/event_header_padding_bottom">
         <TextView
             android:id="@+id/item_event_header_text1"
             android:layout_width="wrap_content"

@@ -3,8 +3,8 @@ package com.framgia.library.calendardayview.decoration;
 import android.content.Context;
 import android.graphics.Rect;
 import com.framgia.library.calendardayview.DayView;
-import com.framgia.library.calendardayview.PopupView;
 import com.framgia.library.calendardayview.EventView;
+import com.framgia.library.calendardayview.PopupView;
 import com.framgia.library.calendardayview.data.IEvent;
 import com.framgia.library.calendardayview.data.IPopup;
 
@@ -38,7 +38,7 @@ public class CdvDecorationDefault implements CdvDecoration {
         PopupView view = new PopupView(mContext);
         view.setOnPopupClickListener(mPopupClickListener);
         view.setPopup(popup);
-        view.setPosition(eventBound);
+        view.setPosition(eventBound, -hourHeight / 4 + seperateH, hourHeight / 2 - seperateH * 2);
         return view;
     }
 

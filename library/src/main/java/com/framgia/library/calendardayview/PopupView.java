@@ -118,13 +118,13 @@ public class PopupView extends FrameLayout {
         startAnimation(mFadeOutAnim);
     }
 
-    public void setPosition(Rect rect) {
+    public void setPosition(Rect rect, int topMargin, int bottomMargin) {
         FrameLayout.LayoutParams params =
                 new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.topMargin = rect.top + 2;
+        params.topMargin = rect.top + topMargin;
         params.leftMargin = rect.left;
-        mCardView.getLayoutParams().height = rect.height();
+        mCardView.getLayoutParams().height = rect.height() + bottomMargin;
         setLayoutParams(params);
     }
 
