@@ -79,7 +79,7 @@ See [MainActivity.java](https://github.com/khacpv/Calendar-Day-View/blob/master/
   CalendarDayView.setEvents(events);
 ````
 
-#### Contribution
+### Contribution
 
 If you've found an error, please file an issue.
 
