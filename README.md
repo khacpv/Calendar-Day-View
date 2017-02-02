@@ -78,3 +78,9 @@ See [MainActivity.java](https://github.com/khacpv/Calendar-Day-View/blob/master/
 
   CalendarDayView.setEvents(events);
 ````
+
+#### Contribution
+
+If you've found an error, please file an issue.
+
+Patches and new samples are encouraged, and may be submitted by forking this project and submitting a pull request through GitHub.
