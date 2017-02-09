@@ -1,14 +1,15 @@
 package com.framgia.sample.calendardayview;
 
-import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import com.framgia.library.calendardayview.CalendarDayView;
-import com.framgia.library.calendardayview.PopupView;
 import com.framgia.library.calendardayview.EventView;
+import com.framgia.library.calendardayview.PopupView;
 import com.framgia.library.calendardayview.data.IEvent;
 import com.framgia.library.calendardayview.data.IPopup;
 import com.framgia.library.calendardayview.decoration.CdvDecorationDefault;
@@ -34,12 +35,16 @@ public class MainActivity extends AppCompatActivity {
                 new EventView.OnEventClickListener() {
                     @Override
                     public void onEventClick(EventView view, IEvent data) {
-
+                        Log.e("TAG", "onEventClick:" + data.getName());
                     }
 
                     @Override
                     public void onEventViewClick(View view, EventView eventView, IEvent data) {
-                        // TODO show popup
+                        Log.e("TAG", "onEventViewClick:" + data.getName());
+                        if (data instanceof Event) {
+                            // change event (ex: set event color)
+                            dayView.setEvents(events);
+                        }
                     }
                 });
 
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             timeStart.set(Calendar.HOUR_OF_DAY, 11);
             timeStart.set(Calendar.MINUTE, 0);
             Calendar timeEnd = (Calendar) timeStart.clone();
-            timeEnd.set(Calendar.HOUR_OF_DAY, 13);
+            timeEnd.set(Calendar.HOUR_OF_DAY, 15);
             timeEnd.set(Calendar.MINUTE, 30);
             Event event = new Event(1, timeStart, timeEnd, "Shift time", "Hockaido", eventColor);
 

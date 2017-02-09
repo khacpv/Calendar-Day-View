@@ -90,6 +90,7 @@ public class EventView extends FrameLayout {
     public void setEvent(IEvent event) {
         this.mEvent = event;
         mEventName.setText(String.valueOf(event.getName()));
+        mEventContent.setBackgroundColor(event.getColor());
     }
 
     public int getHeaderHeight() {
