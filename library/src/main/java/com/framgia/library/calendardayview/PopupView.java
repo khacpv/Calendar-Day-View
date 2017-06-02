@@ -84,7 +84,7 @@ public class PopupView extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (mPopupClickListener != null) {
-                    mPopupClickListener.onQuoteClick(v, mPopup);
+                    mPopupClickListener.onQuoteClick(PopupView.this, mPopup);
                 }
             }
         });
@@ -133,7 +133,7 @@ public class PopupView extends FrameLayout {
         mDescription.setText(String.valueOf(popup.getDescription()));
         mTitle.setText(String.valueOf(popup.getTitle()));
         if(mPopupClickListener != null){
-            mPopupClickListener.onLoadData(mImvStart,mImvEnd, popup);
+            mPopupClickListener.onLoadData(PopupView.this, mImvStart,mImvEnd, popup);
         }
         mQuote.setText(String.valueOf(popup.getQuote()));
     }
@@ -150,8 +150,8 @@ public class PopupView extends FrameLayout {
     public interface OnEventPopupClickListener {
         void onPopupClick(PopupView view, IPopup data);
 
-        void onQuoteClick(View view, IPopup data);
+        void onQuoteClick(PopupView view, IPopup data);
 
-        void onLoadData(ImageView start, ImageView end, IPopup data);
+        void onLoadData(PopupView view, ImageView start, ImageView end, IPopup data);
     }
 }

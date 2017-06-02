@@ -1,6 +1,7 @@
 package com.framgia.sample.calendardayview;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -27,54 +28,68 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dayView = (CalendarDayView) findViewById(R.id.calendar);
-        dayView.setLimitTime(9,22);
+        dayView.setLimitTime(9, 22);
 
         ((CdvDecorationDefault) (dayView.getDecoration())).setOnEventClickListener(
-                new EventView.OnEventClickListener() {
-                    @Override
-                    public void onEventClick(EventView view, IEvent data) {
-                        Log.e("TAG", "onEventClick:" + data.getName());
-                    }
+            new EventView.OnEventClickListener() {
+                @Override
+                public void onEventClick(EventView view, IEvent data) {
+                    Log.e("TAG", "onEventClick:" + data.getName());
+                }
 
-                    @Override
-                    public void onEventViewClick(View view, EventView eventView, IEvent data) {
-                        Log.e("TAG", "onEventViewClick:" + data.getName());
-                        if (data instanceof Event) {
-                            // change event (ex: set event color)
-                            dayView.setEvents(events);
-                        }
+                @Override
+                public void onEventViewClick(View view, EventView eventView, IEvent data) {
+                    Log.e("TAG", "onEventViewClick:" + data.getName());
+                    if (data instanceof Event) {
+                        // change event (ex: set event color)
+                        dayView.setEvents(events);
                     }
-                });
+                }
+            });
 
         ((CdvDecorationDefault) (dayView.getDecoration())).setOnPopupClickListener(
-                new PopupView.OnEventPopupClickListener() {
-                    @Override
-                    public void onPopupClick(PopupView view, IPopup data) {
-                        Log.e("TAG", "onPopupClick:" + data.getTitle());
-                    }
+            new PopupView.OnEventPopupClickListener() {
+                @Override
+                public void onPopupClick(PopupView view, IPopup data) {
+                    Log.e("TAG", "onPopupClick:" + data.getTitle());
+                }
 
-                    @Override
-                    public void onQuoteClick(View view, IPopup data) {
-                        Log.e("TAG", "onQuoteClick:" + data.getTitle());
-                    }
+                @Override
+                public void onQuoteClick(PopupView view, IPopup data) {
+                    Log.e("TAG", "onQuoteClick:" + data.getTitle());
+                }
 
-                    @Override
-                    public void onLoadData(ImageView start, ImageView end, IPopup data) {
-                        start.setImageResource(R.drawable.avatar);
-                    }
-                });
+                @Override
+                public void onLoadData(PopupView view, ImageView start, ImageView end,
+                    IPopup data) {
+                    start.setImageResource(R.drawable.avatar);
+                }
+            });
 
         events = new ArrayList<>();
 
         {
-            int eventColor = getResources().getColor(R.color.eventColor);
+            int eventColor = ContextCompat.getColor(this, R.color.eventColor);
             Calendar timeStart = Calendar.getInstance();
             timeStart.set(Calendar.HOUR_OF_DAY, 11);
             timeStart.set(Calendar.MINUTE, 0);
             Calendar timeEnd = (Calendar) timeStart.clone();
             timeEnd.set(Calendar.HOUR_OF_DAY, 15);
             timeEnd.set(Calendar.MINUTE, 30);
-            Event event = new Event(1, timeStart, timeEnd, "Shift time", "Hockaido", eventColor);
+            Event event = new Event(1, timeStart, timeEnd, "Event", "Hockaido", eventColor);
+
+            events.add(event);
+        }
+
+        {
+            int eventColor = ContextCompat.getColor(this, R.color.eventColor1);
+            Calendar timeStart = Calendar.getInstance();
+            timeStart.set(Calendar.HOUR_OF_DAY, 18);
+            timeStart.set(Calendar.MINUTE, 0);
+            Calendar timeEnd = (Calendar) timeStart.clone();
+            timeEnd.set(Calendar.HOUR_OF_DAY, 20);
+            timeEnd.set(Calendar.MINUTE, 30);
+            Event event = new Event(1, timeStart, timeEnd, "Another event", "Hockaido", eventColor);
 
             events.add(event);
         }
@@ -117,6 +132,5 @@ public class MainActivity extends AppCompatActivity {
 
         dayView.setEvents(events);
         dayView.setPopups(popups);
-
     }
 }
