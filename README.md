@@ -10,7 +10,7 @@ Calendar Day View
 **via Jcenter**
 
 ````Gradle
-compile 'com.framgia.library.calendardayview:library:1.0.3'
+compile 'com.framgia.library.calendardayview:library:1.0.4'
 ````
 
 **or via JitPack (to get current code)**
