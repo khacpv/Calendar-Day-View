@@ -20,8 +20,6 @@
             android:id="@+id/item_event_header_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/d2b_ic_right"
-            android:drawablePadding="4dp"
             android:paddingRight="8dp"
             android:textColor="#ff6378"
             android:layout_alignParentRight="true"/>
