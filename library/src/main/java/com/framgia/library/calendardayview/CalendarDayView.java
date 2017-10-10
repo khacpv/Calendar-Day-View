@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class CalendarDayView extends FrameLayout {
 
-    private int mDayHeight = 300;
+    private int mDayHeight = 0;
 
     private int mEventMarginLeft = 0;
 
@@ -69,6 +69,8 @@ public class CalendarDayView extends FrameLayout {
         mLayoutDayView = (LinearLayout) findViewById(R.id.dayview_container);
         mLayoutEvent = (FrameLayout) findViewById(R.id.event_container);
         mLayoutPopup = (FrameLayout) findViewById(R.id.popup_container);
+
+        mDayHeight = getResources().getDimensionPixelSize(R.dimen.dayHeight);
 
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CalendarDayView);
