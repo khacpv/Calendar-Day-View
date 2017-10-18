@@ -25,10 +25,10 @@ public class CdvDecorationDefault implements CdvDecoration {
 
     @Override
     public EventView getEventView(IEvent event, Rect eventBound, int hourHeight,
-            int seperateHeight) {
+            int separateHeight) {
         EventView eventView = new EventView(mContext);
         eventView.setEvent(event);
-        eventView.setPosition(eventBound, -hourHeight, hourHeight - seperateHeight * 2);
+        eventView.setPosition(eventBound, -hourHeight, hourHeight - separateHeight * 2);
         eventView.setOnEventClickListener(mEventClickListener);
         return eventView;
     }
